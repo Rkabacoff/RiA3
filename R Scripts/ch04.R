@@ -22,7 +22,7 @@ CPS85 <- CPS85[CPS85$wage < 40, ]
 ggplot(data = CPS85, mapping = aes(x = exper, y = wage)) +
   geom_point()
 
-# Figure 4.4 Scaterplot of worker experience vs. wages with outlier removed
+# Figure 4.4 Scatterplot of worker experience vs. wages with outlier removed
 # with modified point color, transparency, and point size
 ggplot(data = CPS85, mapping = aes(x = exper, y = wage)) +
   geom_point(color = "cornflowerblue", alpha = .7, size = 3)
