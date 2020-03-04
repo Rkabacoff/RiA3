@@ -1,7 +1,7 @@
 #------------------------------------------------------------#
 # R in Action (3rd ed): Chapter 4                            #
 # Getting started with graphs                                #
-# requires packages ggplot2, mosaicData to be installed      #
+# requires the ggplot2 and mosaicData packages               #
 # install.packages(c("ggplot2", "mosaicData"))               #
 #------------------------------------------------------------#
 

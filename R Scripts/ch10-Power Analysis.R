@@ -1,8 +1,7 @@
 #-------------------------------------------------------------------#
-# R in Action (2nd ed): Chapter 10                                  #
+# R in Action (3rd ed): Chapter 10                                  #
 # Power analysis                                                    #
-# requires packages pwr, ggplot2 to be installed                    # 
-#   be installed                                                    #
+# requires the pwr and ggplot2 packages                             #
 # install.packages(c("pwr", "ggplot2"))                             #
 #-------------------------------------------------------------------#
 

@@ -1,8 +1,8 @@
 #------------------------------------------------------------#
 # R in Action (3rd ed): Chapter 3                            #
 # Basic data management                                      #
-# requires packages dplyr and sqldf to be installed          #
-# install.packages(c("dplyr", "sqldf")                       #
+# requires packages the dplyr and sqldf packages             #
+# install.packages(c("dplyr", "sqldf"))                      #
 #------------------------------------------------------------#
 
 # Listing 3.1 Creating the leadership data frame

@@ -1,7 +1,7 @@
 #------------------------------------------------------------#
 # R in Action (3rd ed): Chapter 8                            #
 # Regression                                                 #
-# requires packages car, MASS, leaps to be installed         #
+# requires the car, MASS, and leaps packages                 #
 # install.packages(c("car", "MASS", "leaps"))                #
 #------------------------------------------------------------#
 

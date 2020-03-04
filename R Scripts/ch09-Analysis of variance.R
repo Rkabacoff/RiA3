@@ -1,11 +1,9 @@
-#-------------------------------------------------------------------#
-# R in Action (2nd ed): Chapter 9                                   #
-# Analysis of variance                                              #
-# requires packages multcomp, car, effects, rrcov, mvoutlier        # 
-#   be installed                                                    #
-# install.packages(c("multcomp", "car", "effects",                  # 
-#                    "rrcov", "mvoutlier"))                         #
-#-------------------------------------------------------------------#
+#-------------------------------------------------------------------------#
+# R in Action (3rd ed): Chapter 9                                         #
+# Analysis of variance                                                    #
+# requires the multcomp, car, effects, rrcov, and mvoutlier packages      # 
+# install.packages(c("multcomp", "car", "effects", "rrcov", "mvoutlier")) # 
+#-------------------------------------------------------------------------#
 
 # Listing 9.1 - One-way ANOVA
 data(cholesterol, package="multcomp")

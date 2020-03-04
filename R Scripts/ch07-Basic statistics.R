@@ -1,8 +1,8 @@
 #------------------------------------------------------------#
 # R in Action (3rd ed): Chapter 7                            #
 # Basic statistics                                           #
-# requires packages Hmisc, pastecs, psych, dplyr, carData,   #
-#    vcd, gmodels, ggm, MASS, to be installed                #
+# requires the Hmisc, pastecs, psych, dplyr, carData, vcd    #
+#    gmodels, ggm, and MASS packages                         #
 # install.packages(c("Hmisc", "pastecs", "psych", "dplyr",   #   
 #                    "carData", "vcd", "gmodels", "ggm",     #   
 #                    "MASS"))                                #

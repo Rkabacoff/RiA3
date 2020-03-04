@@ -1,7 +1,7 @@
 #------------------------------------------------------------#
 # R in Action (3rd ed): Chapter 5                            #
 # Advanced data management                                   #
-# requires packages MultiRNG, tidyr, dplyr to be installed   #
+# requires the MultiRNG, tidyr, and dplyr packages           #
 # install.packages(c("MultiRNG", "tidyr", "dplyr"))          #
 #------------------------------------------------------------#
 
