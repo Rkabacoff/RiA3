@@ -1,5 +1,7 @@
-## Chapter 02
-## Creating a dataset
+#------------------------------------------------------------#
+# R in Action (3rd ed): Chapter 2                            #
+# Creating a dataset                                         #
+#------------------------------------------------------------#
 
 # Listing 2.1 Creating matrices
 y <- matrix(1:20, nrow=5, ncol=4)

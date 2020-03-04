@@ -1,10 +1,9 @@
-## Chapter 05
-## Advanced data management
-
-# requires packages MultiRNG, tidyr, dplyr
-install.packages("MultiRNG")
-install.packages("tidyr")
-install.packages("dplyr")
+#------------------------------------------------------------#
+# R in Action (3rd ed): Chapter 5                            #
+# Advanced data management                                   #
+# requires packages MultiRNG, tidyr, dplyr to be installed   #
+# install.packages(c("MultiRNG", "tidyr", "dplyr"))          #
+#------------------------------------------------------------#
 
 # Listing 5.1 Calculating the mean and standard deviation
 x <- c(1,2,3,4,5,6,7,8) 

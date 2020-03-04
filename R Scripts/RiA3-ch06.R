@@ -1,12 +1,11 @@
-## Chapter 06
-## Basic graphs
-
-# requires packages ggplot2, vcd, dplyr, treemapify, scales 
-install.packages("ggplot2")
-install.packages("vcd")
-install.packages("dplyr")
-install.packages("treemapify")
-install.packages("scales")
+#------------------------------------------------------------#
+# R in Action (3rd ed): Chapter 6                            #
+# Basic graphs                                               #
+# requires packages ggplot2, vcd, dplyr, treemapfiy,         #
+#   scales to be installed                                   #
+# install.packages(c("ggplot2", "vcd", "dplyr",              # 
+#                    "treemapfiy", "scales"))                #
+#------------------------------------------------------------#
 
 # Listing 6.1 Simple bar charts
 library(ggplot2)

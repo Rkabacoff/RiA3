@@ -1,9 +1,9 @@
-## Chapter 04
-## Getting started with graphs
-
-# requires packages ggplot2, mosaicData
-install.packages("ggplot2")
-install.packages("mosaicData)
+#------------------------------------------------------------#
+# R in Action (3rd ed): Chapter 4                            #
+# Getting started with graphs                                #
+# requires packages ggplot2, mosaicData to be installed      #
+# install.packages(c("ggplot2", "mosaicData"))               #
+#------------------------------------------------------------#
 
 # -- Section 4.1 Creating a graph with ggplot2
 library(ggplot2)
