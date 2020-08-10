@@ -237,4 +237,6 @@ corrgram(mtcars, order=TRUE, lower.panel=panel.shade,
 
 # Figure 11.21 Mosaic plot describing Titanic survivors by class, sex, and age
 library(vcd)
-mosaic(Titanic, shade=TRUE, legend=TRUE)
+mosaic(Titanic, shade=TRUE, legend=TRUE, 
+       labeling_args=list(gp_labels=(gpar(fontsize=10))))
+
