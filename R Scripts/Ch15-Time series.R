@@ -73,9 +73,10 @@ p2 <- autoplot(lAirPassengers, ylab="log(AirPassengers)")
 p1/p2
 
 # Listing 15.4 - Seasonal decomposition using stl()
-fit <- stl(AirPassengers, s.window="period")   
+autoplot(AirPassengers)
+lAirPassengers <- log(AirPassengers)
+fit <- stl(lAirPassengers, s.window="period")   
 autoplot(fit)
-
 
 fit$time.series                                 
 exp(fit$time.series)
