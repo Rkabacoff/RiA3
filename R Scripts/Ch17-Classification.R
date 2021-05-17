@@ -55,7 +55,7 @@ dtree <- rpart(class ~ ., data=train, method="class")
 dtree$cptable
 plotcp(dtree)
 
-dtree.pruned <- prune(dtree, cp=0.019) 
+dtree.pruned <- prune(dtree, cp=0.01705) 
 
 library(rattle)
 fancyRpartPlot(dtree.pruned,  sub="Decision Tree")
