@@ -2,13 +2,13 @@
 # R in Action (3rd ed): Chapter 6                                       #
 # Basic graphs                                                          #
 # requires the ggplot2, vcd, dplyr, treemapfiy and scales packages      #
-# install.packages(c("ggplot2", "vcd", "dplyr", "treemapfiy", "scales"))# 
+# install.packages(c("ggplot2", "vcd", "dplyr", "treemapify", "scales"))# 
 #-----------------------------------------------------------------------#
 
 # Listing 6.1 Simple bar charts
 library(ggplot2)
 data(Arthritis, package="vcd")
-ggplot(Arthritis, aes(x=Improved)) + geom_bar() +
+ggplot(Arthritis, aes(x=Improved, fill=Improved)) + geom_bar() +
   labs(title="Simple Bar chart",                 
        x="Improvement",                          
        y="Frequency")                            
@@ -34,7 +34,7 @@ ggplot(Arthritis, aes(x=Treatment, fill=Improved)) +
 
 ggplot(Arthritis, aes(x=Treatment, fill=Improved)) +
   geom_bar(position = "fill") +                     
-  labs(title="Stacked Bar chart",                   
+  labs(title="Filled Bar chart",                   
        x="Treatment",                               
        y="Frequency") 
 
@@ -51,7 +51,7 @@ ggplot(plotdata, aes(x=reorder(state.region, mean), y=mean)) +
   geom_bar(stat="identity") +
   labs(x="Region",
   y="",
-  title = "Mean Illiteracy Rate"
+  title = "Mean Illiteracy Rate")
 
 # Listing 6.4 Bar chart of mean values with error bars
 plotdata <- states %>%
@@ -71,7 +71,7 @@ labs(x="Region",
      subtitle = "with standard error bars")
 
 # Pie charts
-if(!require(devtools) install.packages("devtools")
+if(!require(remotes)) install.packages("remotes")
    devtools::install_github("rkabacoff/ggpie")
 
 library(ggplot2)
@@ -96,8 +96,8 @@ ggplot(plotdata,
            area = n,
            label = manufacturer)) +
   geom_treemap() +
-  geom_tree_text() +
-  theme(legend.position = FALSE)
+  geom_treemap_text() +
+  theme(legend.position = "none")
 
 # Listing 6.7 Tree Map with Subgrouping
 plotdata <- mpg %>%  
@@ -155,7 +155,7 @@ ggplot(cars2008, aes(x=hwy, y=..density..)) +
        y="Percent" ,
        x="Highway Miles Per Gallon")
 
-# Listing 6.7 Kernel density plots
+# Listing 6.9 Kernel density plots
 data(mpg, package="ggplot2")
 cars2008 <- mpg[mpg$year == 2008, ]
 
@@ -173,7 +173,7 @@ ggplot(cars2008, aes(x=cty)) +
   geom_density(fill="red", bw=.5) +
   labs(title="Kernel density plot with bw=0.5")
 
-# Listing 6.8 Comparative kernel density plots
+# Listing 6.10 Comparative kernel density plots
 data(mpg, package="ggplot2")
 cars2008 <- mpg[mpg$year == 2008 & mpg$cyl != 5,]
 cars2008$Cylinders <- factor(cars2008$cyl)
@@ -191,8 +191,11 @@ ggplot(cars2008, aes(x=cty, fill=Cylinders)) +
 # Box plots
 ggplot(mtcars, aes(x="", y=mpg)) +
   geom_boxplot() +
-  labs(y = "Miles Per Gallon", x="", title="Box Plot"))
+  labs(y = "Miles Per Gallon", x="", title="Box Plot")
 
+cars <- mpg[mpg$cyl != 5, ]
+cars$Cylinders <- factor(cars$cyl)
+cars$Year <- factor(cars$year)
 ggplot(cars, aes(x=Cylinders, y=cty)) + 
   geom_boxplot() +
   labs(x="Number of Cylinders", 
@@ -214,7 +217,7 @@ ggplot(cars, aes(x=Cylinders, y=cty, fill=Year)) +
        title="City Mileage by # Cylinders and Year") +    
   scale_fill_manual(values=c("gold", "green"))      
 
-# Listing 6.9 Violin plots
+# Listing 6.11 Violin plots
 cars <- mpg[mpg$cyl != 5, ]
 cars$Cylinders <- factor(cars$cyl)
 
@@ -246,3 +249,27 @@ ggplot(plotdata, aes(x=meanHwy, y=reorder(model, meanHwy))) +
        y="", 
        title="Gas Mileage for Car Models",
        subtitle = "with standard error bars")
+
+# combining plots to form figure 6.2
+library(ggplot2)
+library(vcd)
+library(patchwork)
+p1 <- ggplot(Arthritis, aes(x=Treatment, fill=Improved)) +
+  geom_bar(position = "stack") +                    
+  labs(title="Stacked Bar chart",                   
+       x="Treatment",                               
+       y="Frequency")                               
+
+p2 <- ggplot(Arthritis, aes(x=Treatment, fill=Improved)) +
+  geom_bar(position = "dodge") +                    
+  labs(title="Grouped Bar chart",                   
+       x="Treatment",                               
+       y="Frequency")                               
+
+p3 <- ggplot(Arthritis, aes(x=Treatment, fill=Improved)) +
+  geom_bar(position = "fill") +                     
+  labs(title="Filled Bar chart",                   
+       x="Treatment",                               
+       y="Frequency") 
+
+wrap_plots(p1, p2, p3, ncol=2)

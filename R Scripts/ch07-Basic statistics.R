@@ -186,7 +186,7 @@ states <- data.frame(state.region, state.x77)
 kruskal.test(Illiteracy ~ state.region, data=states)
 
 # Listing 7.15 Nonparametric multiple comparisons
-source("http://www.statmethods.net/RiA/wmc.txt")              
+source("https://rkabacoff.com/RiA/wmc.R")              
 states <- data.frame(state.region, state.x77)
 wmc(Illiteracy ~ state.region, data=states, method="holm")
 

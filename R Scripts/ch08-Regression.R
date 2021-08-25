@@ -1,9 +1,9 @@
-#------------------------------------------------------------#
-# R in Action (3rd ed): Chapter 8                            #
-# Regression                                                 #
-# requires the car, MASS, and leaps packages                 #
-# install.packages(c("car", "MASS", "leaps"))                #
-#------------------------------------------------------------#
+#---------------------------------------------------------------------#
+# R in Action (3rd ed): Chapter 8                                     #
+# Regression                                                          #
+# requires the car, MASS, effects, bootstrap and leaps packages       #                 #
+# install.packages(c("car", "MASS", "leaps", "effects", "bootstrap")) #               #
+#---------------------------------------------------------------------#
 
 # Listing 8.1 - Simple linear regression
 fit <- lm(weight ~ height, data=women)

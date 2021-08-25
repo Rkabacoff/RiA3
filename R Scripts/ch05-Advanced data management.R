@@ -46,6 +46,7 @@ dim(mydata)
 head(mydata, n=10)
 
 # Listing 5.4 Applying functions to data objects
+set.seed(1234)
 a <- 5
 sqrt(a)
 b <- c(1.243, 5.654, 2.99)

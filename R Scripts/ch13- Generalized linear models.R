@@ -1,8 +1,8 @@
 #---------------------------------------------------------------#
 # R in Action (3rd ed): Chapter 13                              #
 # Generalized linear models                                     #
-# requires packages AER, robustbase, gcc, patchwork             #
-# install.packages(c("AER", "robustbase", "gcc", "patchwork"))  #
+# requires packages AER, robustbase, qcc, patchwork             #
+# install.packages(c("AER", "robustbase", "qcc", "patchwork"))  #
 #---------------------------------------------------------------#
 
 

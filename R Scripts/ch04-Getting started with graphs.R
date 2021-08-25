@@ -7,7 +7,6 @@
 
 # -- Section 4.1 Creating a graph with ggplot2
 library(ggplot2)
-theme_set(theme_bw())
 library(mosaicData)
 
 # Figure 4.1 Mapping worker experience and wages to the x and y axes
@@ -30,7 +29,8 @@ ggplot(data = CPS85, mapping = aes(x = exper, y = wage)) +
 # Figure 4.5 Scatterplot of worker experience vs. wages 
 # with a line of best fit
 ggplot(data = CPS85, mapping = aes(x = exper, y = wage)) +
-  geom_point(color = "cornflowerblue", alpha = .7, size = 3) +
+  geom_point(color = "cornflowerblue", alpha = .7, size = 1.5) +
+  theme_bw() +
   geom_smooth(method = "lm")
 
 # Figure 4.6 Scatterplot of worker experience vs. wages 
@@ -40,18 +40,20 @@ ggplot(data = CPS85,
        mapping = aes(x = exper, y = wage, 
                      color = sex, shape = sex, linetype = sex)) +
   geom_point(alpha = .7, size = 3) +
-  geom_smooth(method = "lm", se = FALSE, size = 1.5)
+  geom_smooth(method = "lm", se = FALSE, size = 1.5) +
+  theme_bw()
 
 # Figure 4.7 Scatterplot of worker experience vs. wages 
 # with custom x- and y-axes and custom color mappings for sex.
 ggplot(data = CPS85,
        mapping = aes(x = exper, y = wage, 
                      color = sex, shape=sex, linetype=sex)) +
-  geom_point(alpha = .7, size = 3) +
+  geom_point(alpha = .7, size = 1.5) +
   geom_smooth(method = "lm", se = FALSE, size = 1.5) +
   scale_x_continuous(breaks = seq(0, 60, 10)) +
-  scale_y_continuous(breaks = seq(0, 30, 5) +
-                    scale_color_manual(values = c("indianred3", "cornflowerblue"))
+  scale_y_continuous(breaks = seq(0, 30, 5)) +
+                    scale_color_manual(values = c("indianred3", "cornflowerblue"))+
+  theme_bw()
                     
 # Figure 4.8 Scatterplot of worker experience vs. wages with 
 # custom x- and y-axes and custom color mappings for sex. 
@@ -64,7 +66,8 @@ ggplot(data = CPS85,
   scale_x_continuous(breaks = seq(0, 60, 10)) +
   scale_y_continuous(breaks = seq(0, 30, 5),
                      label = scales::dollar) +
-  scale_color_manual(values = c("indianred3", "cornflowerblue"))
+  scale_color_manual(values = c("indianred3", "cornflowerblue")) +
+  theme_bw()
 
 # Figure 4.9 Scatterplot of worker experience vs. wages with 
 # custom x- and y-axes and custom color mappings for sex. 
@@ -78,7 +81,8 @@ ggplot(data = CPS85,
   scale_y_continuous(breaks = seq(0, 30, 5),
                      label = scales::dollar) +
   scale_color_manual(values = c("indianred3", "cornflowerblue")) +
-  facet_wrap(~sector)
+  facet_wrap(~sector) +
+  theme_bw()
 
 # Figure 4.10 Scatterplot of worker experience vs. wages 
 # with separate graphs (facets) for each of 8 job sectors 
@@ -99,7 +103,8 @@ ggplot(data = CPS85,
        caption = "source: http://mosaic-web.org/",
        x = " Years of Experience",
        y = "Hourly Wage",
-       color = "Gender", shape = "Gender", linetype = "Gender")
+       color = "Gender", shape = "Gender", linetype = "Gender") +
+  theme_bw()
 
 # Figure 4.11 Scatterplot of worker experience vs. wages 
 # with separate graphs (facets) for each of 8 job sectors 
@@ -130,8 +135,8 @@ ggplot(data = CPS85,
 # along with separate lines of best fit
 ggplot(CPS85,
        mapping = aes(x = exper, y = wage, color = sex)) +
-  geom_point(alpha = .7, size = 3) +
-  geom_smooth(method = "lm", se = FALSE, size = 1.5)
+  geom_point(alpha = .7, size = 1.5) +
+  geom_smooth(method = "lm", se = FALSE, size = 1) 
 
 # Figure 4.13 Scatterplot of experience and wage by sex, 
 # where aes(color=sex) is placed in the geom_point() function. 
@@ -139,8 +144,8 @@ ggplot(CPS85,
 # colors for men and women, but a single line of best fit 
 # for or all workers.
 ggplot(CPS85, aes(x = exper, y = wage)) +
-  geom_point(aes(color = sex), alpha = .7, size = 3) +
-  geom_smooth(method = "lm", se = FALSE, size = 1.5)
+  geom_point(aes(color = sex), alpha = .7, size = 1.5) +
+  geom_smooth(method = "lm", se = FALSE, size = 1) 
 
 # Listing 4.1 Using a ggplot2 graph as an object
 data(CPS85 , package = "mosaicData")
@@ -157,3 +162,7 @@ myplot2
 myplot + geom_smooth(method = "lm") + 
   labs(title = "Mildly interesting graph")
 
+# section 4.2.4
+ggplot(CPS85, aes(x = exper, y = wage, color = "blue")) +
+         geom_point()
+       

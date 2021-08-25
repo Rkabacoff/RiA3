@@ -32,11 +32,11 @@ ggplot(mtcars,
        shape = "Number of \nCylinders") +
   theme_bw()
 
-# Figure 11.3 Scatter-plot matrix with the ggpairs function
+# Scatter-plot matrix with the ggpairs function
 library(GGally)
 ggpairs(mtcars[c("mpg","disp","hp", "wt")])
                
-# Figure 11.4 Customized scatter-plot matrix with fit lines
+# Figure 11.3 Customized scatter-plot matrix with fit lines
 
 library(GGally)
 lowerplots <- function(data, mapping) {
@@ -65,7 +65,7 @@ mytheme <-  theme(strip.background = element_blank(),
 ggpairs(mtcars, 
         columns=c("mpg","disp", "drat", "wt"), 
         columnLabels=c("MPG", "Displacement", 
-                       "R Axel Ratio", "Weight"),
+                       "R Axle Ratio", "Weight"),
         title = "Scatterplot Matrix with Linear and Loess Fits",
         lower = list(continuous = lowerplots),
         diag =  list(continuous = diagplots),
@@ -74,7 +74,7 @@ ggpairs(mtcars,
 
 
 
-# Figure 11.5 Scatterplot wwith 10,000 observations
+# Scatterplot with 10,000 observations
 set.seed(1234)
 n <- 10000
 c1 <- matrix(rnorm(n, mean=0, sd=.5), ncol=2)
@@ -86,23 +86,22 @@ names(mydata) <- c("x", "y")
 ggplot(mydata, aes(x=x, y=y)) + geom_point() +
   ggtitle("Scatter Plot with 10,000 Observations")
 
-# Figure 11.6 Scatter plot using smoothScatter
+# Scatter plot using smoothScatter
 with(mydata,
      smoothScatter(x, y, main="Scatter Plot Colored by Smoothed Densities"))
 
-# Figure 11.7 Hexoganal Bining with 100,000 Observations
+# Hexagonal Bining with 100,000 Observations
 ggplot(mydata, aes(x=x, y=y)) + geom_hex(bins=50) +
   scale_fill_continuous(trans = 'reverse') +
   ggtitle("Scatter Plot with 10,000 Observations")
 
 ## 3-D Scatterplots
-# Figure 11.8 3D scatter plot of miles per gallon, auto weight, and displacement
 library(scatterplot3d)
 with(mtcars,
      scatterplot3d(wt, disp, mpg,
                    main="Basic 3D Scatter Plot"))
 
-# Figure 11.9 3D scatter plot with vertical lines and shading
+# 3D scatter plot with vertical lines and shading
 with(mtcars,
      scatterplot3d(wt, disp, mpg,
                    pch=16,
@@ -110,7 +109,7 @@ with(mtcars,
                    type="h",
                    main="3D Scatter Plot with Vertical Lines"))
 
-# Figure 11.10 3D scatter plot with vertical lines, shading, and overlaid regression plane
+# 3D scatter plot with vertical lines, shading, and overlaid regression plane
 s3d <-with(mtcars,
            scatterplot3d(wt, disp, mpg,
                         pch=16,
@@ -119,19 +118,18 @@ s3d <-with(mtcars,
                         main="3D Scatter Plot with Vertical Lines and Regression Plane"))
 fit <- lm(mpg ~ wt+disp, data=mtcars)
 s3d$plane3d(fit)
-detach(mtcars)
 
-# Figure 11.11 Rotating 3D scatter plot produced by the plot3d() function in the rgl package
+# Rotating 3D scatter plot produced by the plot3d() function in the rgl package
 library(rgl)
 with(mtcars,
      plot3d(wt, disp, mpg, col="red", size=5))
 
-# Figure 11.12 Spinning 3D scatter plot produced by the scatter3d() function in the car package
+# Spinning 3D scatter plot produced by the scatter3d() function in the car package
 library(car)
 with(mtcars,
      scatter3d(wt, disp, mpg))
 
-# Figure 11.13 Bubble plotBubble plot of car weight vs. mpg, 
+# Bubble plotBubble plot of car weight vs. mpg, 
 # where point size is proportional to engine displacement
 ggplot(mtcars, 
        aes(x = wt, y = mpg, size = disp)) +
@@ -140,7 +138,7 @@ ggplot(mtcars,
             x="Weight of Car (lbs/1000)",
             y="Miles Per Gallon")
 
-# Figure 11.14. Enhanced bubble plot. Automobiles with more engine 
+# Figure 11.4. Enhanced bubble plot. Automobiles with more engine 
 # cylinders tend to have increased weight and engine displacement, 
 # and poorer fuel efficiency
 ggplot(mtcars, 
@@ -157,7 +155,7 @@ ggplot(mtcars,
        fill = "Cylinders") +
   theme_minimal() 
 
-# Figure 11.15 Comparison of a scatter plot and a line plot
+# Figure 11.5 Comparison of a scatter plot and a line plot
 library(ggplot2)
 tree1 <- subset(Orange, Tree==1)
 ggplot(data=tree1, 
@@ -177,7 +175,7 @@ ggplot(data=tree1,
        y = "Circumference (mm)") +
   theme_bw()
 
-# Figure 11.16 ggplot2 line types
+# ggplot2 line types
 
 lt <- c("blank", "solid", "dashed", "dotted", 
         "dotdash", "longdash", "twodash")
@@ -193,7 +191,7 @@ ggplot() +
   labs(title = "ggplot2 linetypes") +
   mytheme
 
-# Figure 11.17 Line chart displaying the growth of five orange trees
+# Listing 11.6 Line chart displaying the growth of five orange trees
 ggplot(data=Orange,
         aes(x=age, y=circumference, linetype=Tree, color=Tree)) +
   geom_point() +
@@ -207,14 +205,14 @@ ggplot(data=Orange,
   theme_bw()
 
 
-# Figure 11.18 Corrgram of the correlations among the variables in the mtcars data frame. 
+# Corrgram of the correlations among the variables in the mtcars data frame. 
 # Rows and columns have been reordered using principal components analysis.
 library(corrgram)
 corrgram(mtcars, order=TRUE, lower.panel=panel.shade,
          upper.panel=panel.pie, text.panel=panel.txt,
          main="Corrgram of mtcars intercorrelations")
 
-# Figure 11.19 Corrgram of the correlations among the variables in the 
+# Corrgram of the correlations among the variables in the 
 # mtcars data frame. The lower triangle contains smoothed best-fit lines 
 # and confidence ellipses, and the upper triangle contains scatter plots. 
 # The diagonal panel contains minimum and maximum values. 
@@ -226,7 +224,7 @@ corrgram(mtcars, order=TRUE, lower.panel=panel.ellipse,
          main="Corrgram of mtcars data using scatter plots and ellipses")
 
 
-# Figure 11.20 Corrgram of the correlations among the variables in 
+# Corrgram of the correlations among the variables in 
 # the mtcars data frame. The lower triangle is shaded to represent 
 # the magnitude and direction of the correlations. 
 # Rows and columns have been reordered using principal components analysis. 
@@ -235,7 +233,17 @@ corrgram(mtcars, order=TRUE, lower.panel=panel.shade,
          upper.panel=panel.cor,
          main="Corrgram of mtcars data using shading and coefficients")
 
-# Figure 11.21 Mosaic plot describing Titanic survivors by class, sex, and age
+# Corrgram with an alternate color palette
+library(corrgram) 
+cols <- colorRampPalette(c("darkgoldenrod4", "burlywood1",
+                           "darkkhaki", "darkgreen"))
+corrgram(mtcars, order=TRUE, col.regions=cols,
+         lower.panel=panel.shade, 
+         upper.panel=panel.conf, text.panel=panel.txt,
+         main="A Corrgram (or Horse) of a Different Color")
+
+
+# Mosaic plot describing Titanic survivors by class, sex, and age
 library(vcd)
 mosaic(Titanic, shade=TRUE, legend=TRUE, 
        labeling_args=list(gp_labels=(gpar(fontsize=10))))
