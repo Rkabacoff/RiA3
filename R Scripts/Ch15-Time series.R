@@ -1,10 +1,11 @@
-#---------------------------------------------------------#
-# R in Action (3rd ed): Chapter 15                        #
-# Time series                                             #
-# requires forecast, tseries, and patchwork packages      #
-# install.packages(c("forecast", "tseries",               #
-#                    "patchwork", "directlabels"))        #
-#---------------------------------------------------------#
+#------------------------------------------------------------#
+# R in Action (3rd ed): Chapter 15                           #
+# Time series                                                #
+# requires forecast, tseries, xts, patchwork, ggplot2,       #
+#   and drectlabels packages                                 #
+# install.packages(c("forecast", "tseries", "xts", ggplot2", #
+#                    "patchwork", "directlabels"))           #
+#------------------------------------------------------------#
 
 library(xts)
 library(forecast)

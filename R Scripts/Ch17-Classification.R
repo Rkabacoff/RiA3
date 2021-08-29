@@ -1,10 +1,10 @@
-#----------------------------------------------------------------------#
-# R in Action (3rd ed): Chapter 17                                     #
-# Classification                                                       #
-# requires packaged rpart, partykit, randomForest, e1071, DALEX        #
-# install.packages(c("rpart", "partykit", "randomForest",              #
-#                     "e1071","rattle", "DALEX")                       #
-#----------------------------------------------------------------------#
+#-----------------------------------------------------------------------#
+# R in Action (3rd ed): Chapter 17                                      #
+# Classification                                                        #
+# requires packaged rpart, partykit, randomForest, e1071, DALEX, rattle #
+# install.packages(c("rpart", "partykit", "randomForest",               #
+#                     "e1071","rattle", "DALEX")                        #
+#-----------------------------------------------------------------------#
 
 # Listing 17.1 - Prepare the breast cancer data
 loc <- "http://archive.ics.uci.edu/ml/machine-learning-databases"

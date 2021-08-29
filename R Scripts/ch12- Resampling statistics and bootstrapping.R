@@ -2,8 +2,7 @@
 # R in Action (2nd ed): Chapter 12                                        #
 # Resampling statistics and bootstrapping                                 #
 # requires packages coin, multcomp, vcd, MASS, lmPerm, boot               #
-# install.packages(c("coin","multcomp", "vcd", "MASS", "boot"))           #
-# Follow chapter instructions for installing lmPerm                       #
+# install.packages(c("coin","multcomp", "vcd", "MASS", "boot", "lmPerm")) #
 #-------------------------------------------------------------------------#
 
 

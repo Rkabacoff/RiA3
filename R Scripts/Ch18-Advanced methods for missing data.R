@@ -1,9 +1,11 @@
-#-----------------------------------#
-# R in Action (2nd ed): Chapter 18  #
-# Advanced methods for missing data #
-# requires packages VIM, mice       #
-# install.packages(c("VIM", mice))  #
-#-----------------------------------#
+#----------------------------------------------#
+# R in Action (3rd ed): Chapter 18             #
+# Advanced methods for missing data            #
+# requires packages VIM, mice, ggplot2,        # 
+#    naniar, visdat, DescTools, mi             #
+# install.packages(c("VIM", "mice", "ggplot2", #
+#    "naniar", "visdat", "DescTools", "mi"))   #
+#----------------------------------------------#
 
 # load the dataset
 data(sleep, package="VIM")

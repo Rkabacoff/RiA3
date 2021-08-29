@@ -41,7 +41,7 @@ patientdata
 
 # Listing 2.5 Specifying elements of a data frame
 patientdata[1:2]
-patientID age
+patientID$age
 patientdata[c("diabetes", "status")]
 patientdata$age
 

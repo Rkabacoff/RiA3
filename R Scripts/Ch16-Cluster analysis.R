@@ -1,12 +1,12 @@
 #-------------------------------------------------------------------#
 # R in Action (3rd ed): Chapter 16                                  #
 # Cluster analysis                                                  #
-# requires packaged NbClust, flexclust, rattle, colorhcplot         #
-#                   clusterability, ggdendro, factoextra,           #
+# requires packaged NbClust, flexclust, rattle, colorhcplot, cluster#
+#                   clusterability, ggdendro, factoextra, ggplot2   #
 #                                                                   #
 # install.packages(                                                 #
-#   c("NbClust", "flexclust", "ggdendro", "rattle",                 # 
-#      "clusterability", factoextra", "colorhcplot))                #
+#   c("NbClust", "flexclust", "ggdendro", "rattle", "cluster",      # 
+#      "clusterability", factoextra", "colorhcplot, "ggplot2"))     #
 #-------------------------------------------------------------------#
 
 

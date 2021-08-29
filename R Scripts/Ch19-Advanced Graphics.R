@@ -42,10 +42,12 @@ library(ggplot2)
 library(scales)
 ggplot(Wage, aes(race, fill=education)) +
   geom_bar(position="fill") +
-  scale_x_discrete("",                                              
-                   breaks = c("3. Asian", "1. White", "2. Black"),    
-                   labels = c("Asian", "White", "Black")) +         
-  scale_y_continuous("Percent",                                     
+  scale_x_discrete(name = "",                                              
+                   limits = c("3. Asian", "1. White", "2. Black"),    
+                   labels = c("Asian", "White", "Black")) +
+  scale_color_discrete(labels = c("<HS Grad", "HS Grad", "Some College",
+                                  "College Grad", "Advanced Degree")) +
+  scale_y_continuous(name = "Percent",                                     
                      label = percent_format(accuracy=2),            
                      n.breaks=10) +                                 
   labs(title="Participant Education by Race")
@@ -192,13 +194,12 @@ ggplot(data=mtcars, aes(x = disp, y = mpg)) +
        x = "Engine displacement (cu. in.)",
        y = "Miles per gallon") +
   theme_bw() +                                                  
-  theme(panel.background = element_blank(),                     
-        strip.background = element_rect(fill = "white"),
+  theme(strip.background = element_rect(fill = "white"),
         panel.grid.major = element_line(color="lightgrey"),
         panel.grid.minor = element_line(color="lightgrey",
                                         linetype="dashed"),
         axis.ticks = element_blank(),
-        legend.position = "top",
+        legend.position = "bottom",
         legend.key = element_blank())
 
 ## Listing 19.10 

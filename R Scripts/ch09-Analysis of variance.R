@@ -1,8 +1,10 @@
 #-------------------------------------------------------------------------#
 # R in Action (3rd ed): Chapter 9                                         #
 # Analysis of variance                                                    #
-# requires the multcomp, car, effects, rrcov, and mvoutlier packages      # 
-# install.packages(c("multcomp", "car", "effects", "rrcov", "mvoutlier")) # 
+# requires the multcomp, car, effects, rrcov, and mvoutlier, dplyr, and   #
+#    ggplot2 packages                                                     # 
+# install.packages(c("multcomp", "car", "effects", "rrcov", "mvoutlier",  #
+#    "dplyr", "ggplot2"))                                                 # 
 #-------------------------------------------------------------------------#
 
 # Listing 9.1 - One-way ANOVA

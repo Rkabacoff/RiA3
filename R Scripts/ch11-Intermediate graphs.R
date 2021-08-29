@@ -1,6 +1,10 @@
 #------------------------------------------------------------#
-# R in Action (3rd ed): Chapter 11                           #
+# R in Action (3rd ed): Chapter 11                           # 
 # Intermediate Graphs                                        #
+# requires the ggplot2, GGally, scatterplot3d, car, rgl,     #
+#   corrgram, and vcd packages                               #
+# install.packages(c("ggplot2", "GGally", "scatterplot3d",   #
+#   "car", "rgl", "corrgram", "vcd"))                        #
 #------------------------------------------------------------#
 
 # Listing 11.1 A scatter plot with best-fit lines
