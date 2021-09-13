@@ -1,0 +1,40 @@
+---
+title: "Regression Report"
+author: "RobK"
+date: "7/8/2021"
+output: html_document
+---
+
+# Heights and weights                                    
+
+```{r echo = FALSE} 
+options(digits=3) 
+n    <- nrow(women)                                                  
+fit  <- lm(weight ~ height, data=women) 
+sfit <- summary(fit)
+b    <- coefficients(fit)                                            
+```                                                               
+
+Linear regression was used to model the relationship between 
+weights and height in a sample of `r n` women. The equation 
+**weight = `r b[1]` +  `r b[2]` * height**                        
+accounted for `r round(sfit$r.squared,2)`% of the variance        
+in weights. The ANOVA table is given below.
+
+```{r echo=FALSE}                          
+library(broom)  
+library(knitr)
+library(kableExtra)
+
+results <- tidy(fit)                                            
+tbl <- kable(results)
+kable_styling(tbl, "striped", full_width=FALSE, position="left")  
+```                                                                
+
+The regression is plotted in the following figure.
+
+```{r fig.width=5, fig.height=4}
+library(ggplot2)
+ggplot(data=women, aes(x=height, y=weight)) +
+      geom_point() + geom_smooth(method="lm", formula=y~x)
+```

@@ -1,0 +1,43 @@
+---
+title: "Tech Stock Monthly Report"
+author: "IT Department"
+output: html_document
+params: 
+  enddate: !r Sys.Date()
+  startdate: !r Sys.Date() - 30
+  
+---
+## Largest tech stocks
+
+One month performance for
+
+- Apple (AAPL)  
+- Amazon (AMZN)  
+- Alphabet/Google (GOOG)  
+- Microsoft (MSFT)
+
+```{r, echo=FALSE, message=FALSE}
+
+library(tidyquant)                                                    
+library(ggplot2)
+
+tickers = c("AAPL", "MSFT", "AMZN", "GOOG")
+
+prices <- tq_get(tickers,
+                 from = params$startdate,
+                 to = params$enddate,
+                 get = "stock.prices")
+
+ggplot(prices, aes(x=date, y=adjusted, color=symbol)) +
+  geom_line(size=1) + facet_wrap(~symbol, scale="free") +
+  theme_bw() +
+  theme(legend.position="none") +
+  scale_x_date(date_labels="%m-%d") +
+  scale_color_brewer(palette="Set1") +
+  labs(title="Stock Price Chart",
+       subtitle = paste(params$startdate, "to", params$enddate),
+       x = "Date",
+       y="Adjusted Price")
+```
+
+Source: [Yahoo Finance](https://finance.yahoo.com/)
