@@ -116,7 +116,7 @@ abline(h=cutoff, lty=2, col="red")
 # Added variable plots
 # add id.method="identify" to interactively identify points
 library(car)
-avPlots(fit, ask=FALSE, id.method="identify")
+avPlots(fit, ask=FALSE, id=list(method="identify"))
 
 
 # Influence Plot
