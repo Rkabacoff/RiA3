@@ -126,11 +126,11 @@ ggplot(data = cbind(litter, pred),
 data(ToothGrowth)
 library(dplyr)
 ToothGrowth$dose <- factor(ToothGrowth$dose)
-plotdata <- ToothGrowth %>%
+stats <- ToothGrowth %>%
   group_by(supp, dose) %>%
   summarise(n=n(), mean=mean(len), sd=sd(len),
             ci = qt(0.975, df = n - 1) * sd / sqrt(n))
-plotdata
+stats
 
 
 fit <- aov(len ~ supp*dose, data=ToothGrowth)
@@ -139,7 +139,7 @@ summary(fit)
 # plotting interactions
 library(ggplot2)
 pd <- position_dodge(0.2)
-ggplot(plotdata, 
+ggplot(stats, 
        aes(x = dose, y = mean, 
            group=supp, 
            color=supp, 
