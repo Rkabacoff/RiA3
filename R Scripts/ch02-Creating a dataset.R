@@ -3,6 +3,17 @@
 # Creating a dataset                                         #
 #------------------------------------------------------------#
 
+# Types of vectors
+a <- c(1, 2, 5, 3, 6, -2, 4) # numeric
+b <- c("one", "two", "three") # character
+c <- c(TRUE, TRUE, TRUE, FALSE, TRUE, FALSE) # logical
+
+# subsetting vectors
+a <- c("k", "j", "h", "a", "c", "m")
+a[3]
+a[c(1, 3, 5)]
+a[2:6]  
+
 # Listing 2.1 Creating matrices
 y <- matrix(1:20, nrow=5, ncol=4)
 y
@@ -41,7 +52,7 @@ patientdata
 
 # Listing 2.5 Specifying elements of a data frame
 patientdata[1:2]
-patientID$age
+patientdata$age
 patientdata[c("diabetes", "status")]
 patientdata$age
 
