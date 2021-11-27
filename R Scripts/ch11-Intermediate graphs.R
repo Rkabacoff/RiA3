@@ -36,11 +36,11 @@ ggplot(mtcars,
        shape = "Number of \nCylinders") +
   theme_bw()
 
-# Scatter-plot matrix with the ggpairs function
+# Figure 11.3 Scatter-plot matrix with the ggpairs function
 library(GGally)
 ggpairs(mtcars[c("mpg","disp","hp", "wt")])
                
-# Figure 11.3 Customized scatter-plot matrix with fit lines
+# Figure 11.4 Customized scatter-plot matrix with fit lines
 
 library(GGally)
 lowerplots <- function(data, mapping) {
@@ -57,7 +57,7 @@ diagplots <- function(data, mapping) {
 
 upperplots <- function(data, mapping) {
     ggally_cor(data=data, mapping=mapping, 
-               displayGrid=FALSE, size=3.5, color="black")
+               display_grid=FALSE, size=3.5, color="black")
 }
 
 mytheme <-  theme(strip.background = element_blank(),
@@ -78,7 +78,7 @@ ggpairs(mtcars,
 
 
 
-# Scatterplot with 10,000 observations
+# Figure 11.5 Scatterplot with 10,000 observations
 set.seed(1234)
 n <- 10000
 c1 <- matrix(rnorm(n, mean=0, sd=.5), ncol=2)
@@ -90,22 +90,22 @@ names(mydata) <- c("x", "y")
 ggplot(mydata, aes(x=x, y=y)) + geom_point() +
   ggtitle("Scatter Plot with 10,000 Observations")
 
-# Scatter plot using smoothScatter
+# Figure 11.6 Scatter plot using smoothScatter
 with(mydata,
      smoothScatter(x, y, main="Scatter Plot Colored by Smoothed Densities"))
 
-# Hexagonal Bining with 100,000 Observations
+# Figure 11.7 Hexagonal Binning with 100,000 Observations
 ggplot(mydata, aes(x=x, y=y)) + geom_hex(bins=50) +
   scale_fill_continuous(trans = 'reverse') +
   ggtitle("Scatter Plot with 10,000 Observations")
 
-## 3-D Scatterplots
+## Figure 11.8 3-D Scatterplots
 library(scatterplot3d)
 with(mtcars,
      scatterplot3d(wt, disp, mpg,
                    main="Basic 3D Scatter Plot"))
 
-# 3D scatter plot with vertical lines and shading
+# Figure 11.9 3D scatter plot with vertical lines and shading
 with(mtcars,
      scatterplot3d(wt, disp, mpg,
                    pch=16,
@@ -113,7 +113,8 @@ with(mtcars,
                    type="h",
                    main="3D Scatter Plot with Vertical Lines"))
 
-# 3D scatter plot with vertical lines, shading, and overlaid regression plane
+# Figure 11.10 3D scatter plot with vertical lines, shading,
+# and overlaid regression plane
 s3d <-with(mtcars,
            scatterplot3d(wt, disp, mpg,
                         pch=16,
@@ -123,17 +124,19 @@ s3d <-with(mtcars,
 fit <- lm(mpg ~ wt+disp, data=mtcars)
 s3d$plane3d(fit)
 
-# Rotating 3D scatter plot produced by the plot3d() function in the rgl package
+# Figure 11.11 Rotating 3D scatter plot produced by the 
+# plot3d() function in the rgl package
 library(rgl)
 with(mtcars,
      plot3d(wt, disp, mpg, col="red", size=5))
 
-# Spinning 3D scatter plot produced by the scatter3d() function in the car package
+# Figure 11.12 Spinning 3D scatter plot produced by the 
+# scatter3d() function in the car package
 library(car)
 with(mtcars,
      scatter3d(wt, disp, mpg))
 
-# Bubble plotBubble plot of car weight vs. mpg, 
+# Figure 11.13 Bubble plotBubble plot of car weight vs. mpg, 
 # where point size is proportional to engine displacement
 ggplot(mtcars, 
        aes(x = wt, y = mpg, size = disp)) +
@@ -179,7 +182,7 @@ ggplot(data=tree1,
        y = "Circumference (mm)") +
   theme_bw()
 
-# ggplot2 line types
+# Figure 11.16 ggplot2 line types
 
 lt <- c("blank", "solid", "dashed", "dotted", 
         "dotdash", "longdash", "twodash")
@@ -196,6 +199,7 @@ ggplot() +
   mytheme
 
 # Listing 11.6 Line chart displaying the growth of five orange trees
+library(ggplot2)
 ggplot(data=Orange,
         aes(x=age, y=circumference, linetype=Tree, color=Tree)) +
   geom_point() +
@@ -208,15 +212,18 @@ ggplot(data=Orange,
          linetype = guide_legend(reverse = TRUE)) +
   theme_bw()
 
+# Corrgrams
+round(cor(mtcars), 2)
 
-# Corrgram of the correlations among the variables in the mtcars data frame. 
-# Rows and columns have been reordered using principal components analysis.
+# Figure 11.18 Corrgram of the correlations among the 
+# variables in the mtcars data frame. Rows and columns 
+# have been reordered using principal components analysis.
 library(corrgram)
 corrgram(mtcars, order=TRUE, lower.panel=panel.shade,
          upper.panel=panel.pie, text.panel=panel.txt,
          main="Corrgram of mtcars intercorrelations")
 
-# Corrgram of the correlations among the variables in the 
+# Figure 11.19 Corrgram of the correlations among the variables in the 
 # mtcars data frame. The lower triangle contains smoothed best-fit lines 
 # and confidence ellipses, and the upper triangle contains scatter plots. 
 # The diagonal panel contains minimum and maximum values. 
@@ -228,7 +235,7 @@ corrgram(mtcars, order=TRUE, lower.panel=panel.ellipse,
          main="Corrgram of mtcars data using scatter plots and ellipses")
 
 
-# Corrgram of the correlations among the variables in 
+# Figure 11.20 Corrgram of the correlations among the variables in 
 # the mtcars data frame. The lower triangle is shaded to represent 
 # the magnitude and direction of the correlations. 
 # Rows and columns have been reordered using principal components analysis. 
@@ -237,7 +244,7 @@ corrgram(mtcars, order=TRUE, lower.panel=panel.shade,
          upper.panel=panel.cor,
          main="Corrgram of mtcars data using shading and coefficients")
 
-# Corrgram with an alternate color palette
+# Corrgram with an alternate color palette (not shown in book)
 library(corrgram) 
 cols <- colorRampPalette(c("darkgoldenrod4", "burlywood1",
                            "darkkhaki", "darkgreen"))
@@ -247,7 +254,8 @@ corrgram(mtcars, order=TRUE, col.regions=cols,
          main="A Corrgram (or Horse) of a Different Color")
 
 
-# Mosaic plot describing Titanic survivors by class, sex, and age
+# Figure 11.21Mosaic plot describing Titanic survivors by 
+# class, sex, and age
 library(vcd)
 mosaic(Titanic, shade=TRUE, legend=TRUE, 
        labeling_args=list(gp_labels=(gpar(fontsize=10))))
