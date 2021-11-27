@@ -122,6 +122,7 @@ ggplot(data = cbind(litter, pred),
   theme(axis.text.x = element_text(angle=45, hjust=1),
         legend.position="none")
 
+
 # Listing 9.6 - Two way ANOVA
 data(ToothGrowth)
 library(dplyr)
