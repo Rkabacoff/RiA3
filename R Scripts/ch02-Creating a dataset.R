@@ -22,13 +22,11 @@ rnames <- c("R1", "R2")
 cnames <- c("C1", "C2")
 mymatrix <- matrix(cells,
   nrow = 2, ncol = 2, byrow = TRUE,
-  dimnames = list(rnames, cnames)
-)
+  dimnames = list(rnames, cnames))
 mymatrix
 mymatrix <- matrix(cells,
   nrow = 2, ncol = 2, byrow = FALSE,
-  dimnames = list(rnames, cnames)
-)
+  dimnames = list(rnames, cnames))
 mymatrix
 
 # Listing 2.2 Using matrix subscripts
