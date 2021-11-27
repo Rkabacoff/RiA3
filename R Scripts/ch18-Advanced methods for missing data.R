@@ -18,40 +18,28 @@ sleep[complete.cases(sleep),]
 # list the rows that have one or more missing values
 sleep[!complete.cases(sleep),]
 
+# number of Dream missing values
+sum(is.na(sleep$Dream))
 
-# tabulate missing values patters
+# percent of missing values on Dream
+mean(is.na(sleep$Dream))
+
+# percent of cases with missing data
+mean(!complete.cases(sleep))
+
+
+# Listing 18.1 Missing values patterns with md.pattern()
 library(mice)
 md.pattern(sleep, rotate.names=TRUE)
 
-library(visdat)
-vis_dat(sleep)
-library(ggplot2)
-vis_miss(sleep) + 
-  theme(axis.text.x=element_text(size=8, angle=90))
-vis_miss(sleep, 
-         cluster=TRUE, 
-         sort_miss=FALSE,
-         show_perc_col=TRUE) +
-  coord_flip() +
-  theme(axis.text.y=element_text(size=8),
-        axis.text.x=element_text(size=8, angle=0)) 
-
-library(naniar)
-gg_miss_upset(sleep)
-gg_miss_var(sleep)
-gg_miss_case(sleep)
-
-# plot missing values patterns
+# plot missing values patterns using VIM
 library("VIM")
-aggr(sleep)
-aggr(sleep, prop=FALSE, numbers=TRUE, cex.axis=.8,
-     cex.numbers=.7, cex.lab=.9, gap=2)
-matrixplot(sleep)
+aggr(sleep, prop=FALSE, numbers=TRUE)
+matrixplot(sleep, sort="BodyWgt")
 marginplot(sleep[c("Gest","Dream")], pch=20, 
            col=c("darkgray", "red", "blue"))
-aggr(sleep, prop=FALSE, numbers=TRUE)
-aggr(sleep, prop=FALSE, numbers=TRUE, cex.axis=1,
-     cex.numbers=1, cex.lab=.9, gap=1)
+
+
 # use correlations to explore missing values
 x <- as.data.frame(abs(is.na(sleep)))
 head(sleep, n=5)
@@ -67,27 +55,30 @@ cor(na.omit(sleep))
 fit <- lm(Dream ~ Span + Gest, data=na.omit(sleep))
 summary(fit)
 
+# available case analysis (pairwise deletion)
+cor(sleep, use="pairwise.complete.obs")
 
-# multiple imputation
-options(digits=3)
+# Listing 18.2 k-Nearest Neighbor Imputation for the sleep data frame
+options(digits=7)
+library(VIM)
+head(sleep)
+sleep_imp <- kNN(sleep, imp_var=FALSE)
+head(sleep_imp)
+
+# Listing 18.3 Random forest imputatoin for the sleep data frame
+library(missForest)
+set.seed(1234)
+sleep_imp <- missForest(sleep)$ximp
+head(sleep_imp)
+
+# multiple imputation with the mice package
+options(digits=8)
 library(mice)
 data(sleep, package="VIM")
 imp <- mice(sleep, seed=1234)
 fit <- with(imp, lm(Dream ~ Span + Gest))
 pooled <- pool(fit)
 summary(pooled)
-imp
-
-####
-library(mi)
-mdf <- missing_data.frame(sleep)
-image(mdf)
-image(mdf, grayscale=FALSE)
-
-library(DescTools)
-PlotMiss(sleep, clust=TRUE, main="Missing Values")
-PlotMiss(sleep)
-library(naniar)
-vis_miss(sleep, cluster=TRUE, sort_miss=TRUE)
-gg_miss_upset(sleep)
-
+imp$imp$Dream
+dataset3 <- complete(imp, action=3)
+dataset3
