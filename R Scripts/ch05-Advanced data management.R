@@ -44,13 +44,10 @@ options(digits = 3)
 set.seed(1234)
 
 mean <- c(230.7, 146.7, 3.6)
-sigma <- matrix(c(
-  15360.8, 6721.2, -47.1,
-  6721.2, 4700.9, -16.5,
-  -47.1, -16.5, 0.3
-),
-nrow = 3, ncol = 3
-)
+sigma <- matrix(c(15360.8, 6721.2, -47.1,
+                  6721.2, 4700.9, -16.5,
+                   -47.1,  -16.5,   0.3), 
+                nrow = 3, ncol = 3)
 
 mydata <- draw.d.variate.normal(500, 3, mean, sigma)
 mydata <- as.data.frame(mydata)
@@ -80,18 +77,15 @@ apply(mydata, 2, mean, trim = 0.2)
 # Listing 5.6 A solution to the learning example
 options(digits = 2)
 
-Student <- c(
-  "John Davis", "Angela Williams", "Bullwinkle Moose",
-  "David Jones", "Janice Markhammer", "Cheryl Cushing",
-  "Reuven Ytzrhak", "Greg Knox", "Joel England",
-  "Mary Rayburn"
-)
+Student <- c("John Davis", "Angela Williams", "Bullwinkle Moose",
+             "David Jones", "Janice Markhammer", "Cheryl Cushing",
+              "Reuven Ytzrhak", "Greg Knox", "Joel England",
+              "Mary Rayburn")
 Math <- c(502, 600, 412, 358, 495, 512, 410, 625, 573, 522)
 Science <- c(95, 99, 80, 82, 75, 85, 80, 95, 89, 86)
 English <- c(25, 22, 18, 15, 20, 28, 15, 30, 27, 18)
 roster <- data.frame(Student, Math, Science, English,
-  stringsAsFactors = FALSE
-)
+                     stringsAsFactors = FALSE)
 
 z <- scale(roster[, 2:4])
 score <- apply(z, 1, mean)
@@ -158,20 +152,18 @@ t(cars)
 # Listing 5.10 Converting a wide format data frame to a long format
 library(tidyr)
 
-data_wide <- data.frame(
-  ID = c("AU", "CN", "PRK"),
-  Country = c("Australia", "China", "North Korea"),
-  LExp1990 = c(76.9, 69.3, 69.9),
-  LExp2000 = c(79.6, 72.0, 65.3),
-  LExp2010 = c(82.0, 75.2, 69.6)
-)
+data_wide <- data.frame(ID = c("AU", "CN", "PRK"),
+                        Country = c("Australia", "China", "North Korea"),
+                        LExp1990 = c(76.9, 69.3, 69.9),
+                        LExp2000 = c(79.6, 72.0, 65.3),
+                        LExp2010 = c(82.0, 75.2, 69.6))
 data_wide
 
 
-data_long <- gather(data_wide,
-  key = "Variable", value = "Life_Exp",
-  c(LExp1990, LExp2000, LExp2010)
-)
+data_long <- gather(data_wide, 
+                    key = "Variable", 
+                    value = "Life_Exp",
+                    c(LExp1990, LExp2000, LExp2010))
 data_long
 
 # Listing 5.11 Converting a long format data frame to a wide format
@@ -181,16 +173,14 @@ data_wide
 # Listing 5.12 Aggregating data with the aggregate() function
 options(digits = 3)
 aggdata <- aggregate(mtcars,
-  by = list(mtcars$cyl, mtcars$gear),
-  FUN = mean, na.rm = TRUE
-)
+                     by = list(mtcars$cyl, mtcars$gear),
+                     FUN = mean, na.rm = TRUE)
 aggdata
 
 # Listing 5.13 Improved code for aggregating data with aggregate()
 aggdata <- aggregate(mtcars[-c(2, 10)],
-  by = list(Cylinders = mtcars$cyl, Gears = mtcars$gear),
-  FUN = mean, na.rm = TRUE
-)
+                     by = list(Cylinders = mtcars$cyl, Gears = mtcars$gear),
+                     FUN = mean, na.rm = TRUE)
 aggdata
 
 # Listing 5.14 Aggregating data with the dplyr package
