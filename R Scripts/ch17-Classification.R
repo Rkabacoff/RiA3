@@ -178,6 +178,7 @@ rf_pparts
 plot(rf_pparts)
 
 # Plotting shapely values 
+set.seed(1234)
 rf_pparts = predict_parts(explainer = explainer_rf_malignant, 
                           new_observation = alex, 
                           type = "shap")
