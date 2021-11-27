@@ -5,6 +5,12 @@
 # install.packages("psych")                  #
 #--------------------------------------------#
 
+# parallel analysis
+library(psych)
+fa.parallel(USJudgeRatings[,-1], fa="pc", n.iter=100, 
+            show.legend=FALSE, main="Scree plot with parallel analysis")
+abline(h=1)
+
 
 # Listing 14.1 - Principal components analysis of US Judge Ratings
 library(psych)
@@ -55,6 +61,7 @@ correlations
 set.seed(1234) # make results reproducible
 fa.parallel(correlations, n.obs=112, fa="both", n.iter=100,
             main="Scree plots with parallel analysis")
+abline(h=c(0,1))
 
 
 # Listing 14.6 - Principal axis factoring without rotation
