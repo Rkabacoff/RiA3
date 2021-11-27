@@ -86,7 +86,7 @@ ggplot(mpg, aes(x=model)) +
   geom_bar() +
   labs(title="Car models in the mpg dataset", 
        y="Frequency", x="") +
-  coord_flip  () 
+  coord_flip() 
 
 ggplot(mpg, aes(x=model)) + 
   geom_bar() +
