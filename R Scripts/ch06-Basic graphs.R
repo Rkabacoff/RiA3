@@ -70,6 +70,31 @@ labs(x="Region",
      title = "Mean Illiteracy Rate",
      subtitle = "with standard error bars")
 
+# Figure 6.5 Bar chart
+data(Arthritis, package="vcd")
+ggplot(Arthritis, aes(x=Improved)) + 
+  geom_bar(fill="gold", color="black") +
+  labs(title="Treatment Outcome") 
+
+# Bar chart labels
+ggplot(mpg, aes(x=model)) + 
+  geom_bar() +
+  labs(title="Car models in the mpg dataset", 
+       y="Frequency", x="") 
+
+ggplot(mpg, aes(x=model)) + 
+  geom_bar() +
+  labs(title="Car models in the mpg dataset", 
+       y="Frequency", x="") +
+  coord_flip  () 
+
+ggplot(mpg, aes(x=model)) + 
+  geom_bar() +
+  labs(title="Model names in the mpg dataset", 
+       y="Frequency", x="") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1, size=8)) 
+
+
 # Pie charts
 if(!require(remotes)) install.packages("remotes")
    devtools::install_github("rkabacoff/ggpie")
@@ -202,7 +227,7 @@ ggplot(cars, aes(x=Cylinders, y=cty)) +
        y="Miles Per Gallon", 
        title="Car Mileage Data")
 
-ggplot(cars, aes(x=Cylinder, y=cty)) + 
+ggplot(cars, aes(x=Cylinders, y=cty)) + 
   geom_boxplot(notch=TRUE, 
                fill="steelblue",
                varwidth=TRUE) +
