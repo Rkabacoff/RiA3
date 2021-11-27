@@ -19,8 +19,8 @@ nutrient.scaled <- as.data.frame(scale(nutrient))
 d <- dist(nutrient.scaled)                                          
 fit.average <- hclust(d, method="average") 
 
-library(ggdendro)                          
-dedgrogram(fit.average) + 
+library(ggdendro) 
+ggdendrogram(fit.average) + 
   labs(title="Average Linkage Clustering")
 
 
@@ -47,7 +47,7 @@ profiles %>% round(3) %>% data.frame()
 library(colorhcplot)
 cl <-factor(clusters, levels=c(1:5), 
               labels=paste("cluster", 1:5))
-colorhcplot(fit.average, cl, hang=-1, lab.csx=.8, lwd=2,
+colorhcplot(fit.average, cl, hang=-1, lab.cex=.8, lwd=2,
             main="Average-Linkage Clustering\n5 Cluster Solution")
 
 
@@ -122,8 +122,6 @@ library(cluster)
 set.seed(1234)
 fit.pam <- pam(wine[-1], k=3, stand=TRUE)       
 fit.pam$medoids                                 
-clusplot(fit.pam, main="Bivariate Cluster Plot")
-
 
 # evaluate clustering
 ct.pam <- table(wine$Type, fit.pam$clustering)
@@ -143,13 +141,13 @@ ggplot(df, aes(x=V1, y=V2)) +
 
 wssplot(df)
 library(NbClust)
+library(factoextra)
 nc <- NbClust(df, min.nc=2, max.nc=15, method="kmeans")
-barplot(table(nc$Best.n[1,]), 
-        xlab="Numer of Clusters", ylab="Number of Criteria",
-        main  ="Number of Clusters Chosen by 26 Criteria")
+fviz_nbclust(nc)
+
 
 library(ggplot2)
-fit <- kmeans(df, k=2)
+fit <- kmeans(df, 2)
 df$cluster <- factor(fit$cluster)
 ggplot(data=df, aes(x=V1, y=V2, color=cluster, shape=cluster)) +  
   theme_minimal() +
@@ -170,6 +168,6 @@ ggplot(plotdata, aes(x=k, y=CCC)) +
   geom_point() + geom_line() +
   theme_minimal() +
   scale_x_continuous(breaks=seq_len(k)) +
-  labs(x="Number of Clusters")ggplot(plotdata, aes(x=k, y=CCC)) +
-  geom_point() + geom_line()
+  labs(x="Number of Clusters")
+
 
