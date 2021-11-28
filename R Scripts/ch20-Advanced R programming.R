@@ -57,21 +57,22 @@ fit[[2]][1,]
 fit$centers$Petal.Width  # should give an error
 
 
-# Listing 20.1 - Plotting the centroides from a k-mean cluster analysis
+# Listing 20.1 - Plotting the centroides from a k-mean 
+# cluster analysis
+set.seed(1234)
 fit <- kmeans(iris[1:4], 3)                              
 means <- as.data.frame(fit$centers)
 means$cluster <- row.names(means)
 
 library(tidyr)                                         
-dflong <- gather(means, 
-                 key="key", 
-                 value="value", 
-                 Sepal.Length:Petal.Width)
-names(dflong) <- c("Cluster", "Measurement", "Centimeters")
-dflong$Cluster <- factor(dflong$Cluster)
-head(dflong)
+plotdata <- gather(means, 
+                   key="key", 
+                   value="value", 
+                   Sepal.Length:Petal.Width)
+names(plotdata) <- c("Cluster", "Measurement", "Centimeters")
+head(plotdata)
 library(ggplot2)                                          
-ggplot(data=dflong, 
+ggplot(data=plotdata, 
        aes(x=Measurement, y=Centimeters, group=Cluster)) + 
   geom_point(size=3, aes(shape=Cluster, color=Cluster)) +
   geom_line(size=1, aes(color=Cluster)) +
