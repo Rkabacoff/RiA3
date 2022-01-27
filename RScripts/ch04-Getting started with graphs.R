@@ -8,6 +8,7 @@
 # -- Section 4.1 Creating a graph with ggplot2
 library(ggplot2)
 library(mosaicData)
+data(CPS85)
 
 # Figure 4.1 Mapping worker experience and wages to the x and y axes
 ggplot(data = CPS85, mapping = aes(x = exper, y = wage))
@@ -24,7 +25,8 @@ ggplot(data = CPS85, mapping = aes(x = exper, y = wage)) +
 # Figure 4.4 Scatterplot of worker experience vs. wages with outlier removed
 # with modified point color, transparency, and point size
 ggplot(data = CPS85, mapping = aes(x = exper, y = wage)) +
-  geom_point(color = "cornflowerblue", alpha = .7, size = 1.5)
+  geom_point(color = "cornflowerblue", alpha = .7, size = 1.5) +
+  theme_bw()
 
 # Figure 4.5 Scatterplot of worker experience vs. wages
 # with a line of best fit
@@ -154,6 +156,8 @@ ggplot(CPS85, aes(x = exper, y = wage)) +
 data(CPS85, package = "mosaicData")
 CPS85 <- CPS85[CPS85$wage < 40, ]
 
+
+
 myplot <- ggplot(data = CPS85, aes(x = exper, y = wage)) +
   geom_point()
 
@@ -166,5 +170,6 @@ myplot + geom_smooth(method = "lm") +
   labs(title = "Mildly interesting graph")
 
 # section 4.2.4
+# Listing 4.15
 ggplot(CPS85, aes(x = exper, y = wage, color = "blue")) +
-  geom_point()
+  geom_point() 
