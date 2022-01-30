@@ -27,11 +27,11 @@ summary(fit)
 library(ggplot2)
 ggplot(plotdata, 
        aes(x = trt, y = mean, group = 1)) +
-  geom_point(size = 3, color="red") +
-  geom_line(linetype="dashed", color="darkgrey") +
+  geom_line(linetype="dashed", color="darkgrey") + 
   geom_errorbar(aes(ymin = mean - ci, 
                     ymax = mean + ci), 
                 width = .2) +
+  geom_point(size = 3, color="red") +
   theme_bw() + 
   labs(x="Treatment",
        y="Response",
@@ -46,9 +46,9 @@ plotdata$conditions <- row.names(plotdata)
 
 library(ggplot2)
 ggplot(data=plotdata, aes(x=conditions, y=diff)) + 
-  geom_point(size=3, color="red") +
   geom_errorbar(aes(ymin=lwr, ymax=upr, width=.2)) +
   geom_hline(yintercept=0, color="red", linetype="dashed") +
+  geom_point(size=3, color="red") +
   theme_bw() +
   labs(y="Difference in mean levels", x="", 
        title="95% family-wise confidence level") +

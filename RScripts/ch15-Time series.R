@@ -138,6 +138,9 @@ dNile <- diff(Nile)
 autoplot(dNile) + labs(y="diff(Nile)")  
 adf.test(dNile)
 
+# identifying one or more reasonable models
+autoplot(Acf(dNile))
+autoplot(Pacf(dNile))
 
 # Listing 15.10 - Fit an ARIMA model
 fit <- Arima(Nile, order=c(0,1,1))                                 

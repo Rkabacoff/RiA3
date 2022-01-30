@@ -10,7 +10,6 @@
 #-------------------------------------------------------------------#
 
 
-
 # Listing 16.1 - Average linkage clustering of nutrient data
 data(nutrient, package="flexclust")
 row.names(nutrient) <- tolower(row.names(nutrient))
@@ -20,6 +19,7 @@ d <- dist(nutrient.scaled)
 fit.average <- hclust(d, method="average") 
 
 library(ggdendro) 
+library(ggplot2)
 ggdendrogram(fit.average) + 
   labs(title="Average Linkage Clustering")
 
@@ -45,6 +45,7 @@ profiles <- nutrient.scaled %>%
 profiles %>% round(3) %>% data.frame()  
 
 library(colorhcplot)
+par(mfrow=c(1, 1))
 cl <-factor(clusters, levels=c(1:5), 
               labels=paste("cluster", 1:5))
 colorhcplot(fit.average, cl, hang=-1, lab.cex=.8, lwd=2,
@@ -61,8 +62,8 @@ wssplot <- function(data, nc=15, seed=1234){
   }
   results <- data.frame(cluster=1:nc, wss=wss)
   ggplot(results, aes(x=cluster,y=wss)) +
-    geom_point(color="steelblue", size=2) +
     geom_line(color="grey") +
+    geom_point(color="steelblue", size=2) +
     theme_bw() +
     labs(x="Number of Clusters",
          y="Within groups sum of squares")
@@ -80,6 +81,9 @@ wssplot(df)
 set.seed(1234)
 nc <- NbClust(df, min.nc=2, max.nc=15, method="kmeans")
 fviz_nbclust(nc)
+
+set.seed(1234)
+fit.km <- kmeans(df, 3, nstart=24)
 
 fit.km$centers
 aggregate(wine[-1], by=list(cluster=fit.km$cluster), mean)
@@ -108,7 +112,7 @@ ggplot(plotdata,
 
 # plot clusters
 library(factoextra)
-fviz_cluster(fit.km, data=df)
+fviz_cluster(fit.km, data=df, labelsize=8)
 
 # evaluate clustering
 ct.km <- table(wine$Type, fit.km$cluster)
