@@ -184,7 +184,7 @@ library(ggplot2)
 ggplot(data=CO2, aes(x=conc, y=uptake, fill=Type)) +
   geom_boxplot() +
   theme_bw() + theme(legend.position="top") +
-  scale_fill_manual(values=c("gold", "green"))+
+  scale_fill_manual(values=c("aliceblue", "deepskyblue"))+
   labs(x="Concentration", y="Uptake", 
        title="Chilled Quebec and Mississippi Plants")
 

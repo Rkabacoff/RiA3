@@ -21,22 +21,22 @@ ggplot(Arthritis, aes(x=Improved)) + geom_bar() +
 
 # Listing 6.2 Stacked, grouped, and filled bar charts
 ggplot(Arthritis, aes(x=Treatment, fill=Improved)) +
-  geom_bar(position = "stack") +                    
+  geom_bar(position = "stack") +  
   labs(title="Stacked Bar chart",                   
        x="Treatment",                               
        y="Frequency")                               
 
 ggplot(Arthritis, aes(x=Treatment, fill=Improved)) +
-  geom_bar(position = "dodge") +                    
+  geom_bar(position = "dodge") + 
   labs(title="Grouped Bar chart",                   
        x="Treatment",                               
        y="Frequency")                               
 
 ggplot(Arthritis, aes(x=Treatment, fill=Improved)) +
-  geom_bar(position = "fill") +                     
+  geom_bar(position = "fill") +  
   labs(title="Filled Bar chart",                   
        x="Treatment",                               
-       y="Frequency") 
+       y="Proportion") 
 
 # Listing 6.3 Bar chart for sorted mean values
 states <- data.frame(state.region, state.x77)    
@@ -274,27 +274,3 @@ ggplot(plotdata, aes(x=meanHwy, y=reorder(model, meanHwy))) +
        y="", 
        title="Gas Mileage for Car Models",
        subtitle = "with standard error bars")
-
-# combining plots to form figure 6.2
-library(ggplot2)
-library(vcd)
-library(patchwork)
-p1 <- ggplot(Arthritis, aes(x=Treatment, fill=Improved)) +
-  geom_bar(position = "stack") +                    
-  labs(title="Stacked Bar chart",                   
-       x="Treatment",                               
-       y="Frequency")                               
-
-p2 <- ggplot(Arthritis, aes(x=Treatment, fill=Improved)) +
-  geom_bar(position = "dodge") +                    
-  labs(title="Grouped Bar chart",                   
-       x="Treatment",                               
-       y="Frequency")                               
-
-p3 <- ggplot(Arthritis, aes(x=Treatment, fill=Improved)) +
-  geom_bar(position = "fill") +                     
-  labs(title="Filled Bar chart",                   
-       x="Treatment",                               
-       y="Frequency") 
-
-wrap_plots(p1, p2, p3, ncol=2)
