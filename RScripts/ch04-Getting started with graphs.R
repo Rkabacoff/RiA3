@@ -154,7 +154,7 @@ ggplot(CPS85, aes(x = exper, y = wage)) +
   geom_point(aes(color = sex), alpha = .7, size = 1.5) +
   geom_smooth(method = "lm", se = FALSE, size = 1)
 
-# Listing 4.1 Using a ggplot2 graph as an object
+# Listing 4.14 Using a ggplot2 graph as an object
 data(CPS85, package = "mosaicData")
 CPS85 <- CPS85[CPS85$wage < 40, ]
 
